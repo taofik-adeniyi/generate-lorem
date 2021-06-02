@@ -6,7 +6,15 @@ function App() {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('hello lorem ips');
+    let amount = parseInt(count)
+    console.log(typeof amount);
+    if(count <= 0) {
+      amount = 1
+    }
+    if(count > 8) {
+      amount = 8
+    }
+    setText(data.slice(0, amount))
   }
   return (
   <section className="section-center">
@@ -17,12 +25,12 @@ function App() {
       <button type="submit" className="btn">generate</button>
     </form>
     <article className="lorem-text">
-      <p>
-        lorem dummy content for text sampling the layout structure here and there with much more information to be made available soon
-      </p>
-      <p>
-        lorem dummy content for text sampling the layout structure here and there with much more information to be made available soon
-      </p>
+      {
+        text.map((item, index)=>{
+
+          return <p key={index}>{item}</p>
+        })
+      }
     </article>
   </section>
     )
